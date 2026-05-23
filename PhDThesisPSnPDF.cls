@@ -717,6 +717,13 @@ wish to left align your text}
 }
 \fi
 
+% ********************************* Hyphenation  *******************************
+% Stop all hyphenation
+\RequirePackage{microtype}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
 % ************************** TOC and Hide Sections *****************************
 \newcommand{\nocontentsline}[3]{}
