@@ -982,9 +982,9 @@ wish to left align your text}
 {\usebox{\PHD@Title}} % subtitle is defined
 
 % Author and Advisor
-\vspace*{4em}
+\vspace*{3em}
 {\usebox{\PHD@authorandadvisor}}
-\vspace*{4em}
+\vspace*{3em}
 
 % % Author
 % \vspace*{1em}
