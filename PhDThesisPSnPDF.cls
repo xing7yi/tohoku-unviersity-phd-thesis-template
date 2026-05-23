@@ -732,7 +732,7 @@ wish to left align your text}
 	\addcontentsline=\nocontentsline#1{#2}
 	\egroup}
 % Removes pagenumber appearing from TOC
-\addtocontents{toc}{\protect\thispagestyle{empty}}
+\addtocontents{toc}{\protect\thispagestyle{plain}}
 
 
 % ***************************** Header Formatting ******************************
@@ -794,7 +794,9 @@ wish to left align your text}
 %\renewcommand{\headrulewidth}{0.5pt}
 %\renewcommand{\footrulewidth}{0pt}
 \fancypagestyle{plain}{
-  \fancyhead{}
+  % \fancyhead{}
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}  
   \renewcommand{\headrulewidth}{0pt}
 }
 
@@ -1042,7 +1044,7 @@ wish to left align your text}
 \cleardoublepage
 \setsinglecolumn
 \chapter*{ \LARGE \@declarationtitle}
-\thispagestyle{empty}
+\thispagestyle{plain}
 }{
 % \flushright
 % \@author{}\\
@@ -1060,7 +1062,7 @@ wish to left align your text}
 \cleardoublepage
 \setsinglecolumn
 \chapter*{\centering \normalfont\LARGE \textit \@acknowledgementstitle}
-\thispagestyle{empty}
+\thispagestyle{plain}
 }
 
 
@@ -1151,7 +1153,7 @@ wish to left align your text}
 \PHD@abstracttrue   % Temporarily enable
 \ifPHD@abstract
 % Separate abstract as per Student Registry guidelines
-  \thispagestyle{empty}
+  \thispagestyle{plain}
   \setsinglecolumn
   \begin{center}
     {\normalsize \textcolor{mdtRed}{\MakeUppercase{\@university}}\par}
@@ -1161,7 +1163,7 @@ wish to left align your text}
     {\normalsize \@dept \par}
     {\normalsize \@college \par}
     \bigskip
-    {\normalsize {\bfseries {\@title}} \par}
+    {\large {\bfseries {\@title}} \par}
     \medskip
     {{\normalsize \@byname{} \@author} \par}
   \end{center}
