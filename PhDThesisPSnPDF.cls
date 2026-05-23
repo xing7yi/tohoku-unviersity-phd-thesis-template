@@ -644,11 +644,11 @@ supported!}
     bookmarksopen=true,
     bookmarksnumbered=true,
     breaklinks=true,
-    linktocpage,
+    linktocpage=false,
     colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
-    citecolor=blue,
+    linkcolor=red,
+    urlcolor=mdtRed,
+    citecolor=magenta,
     anchorcolor=green
   }
 
@@ -897,13 +897,14 @@ wish to left align your text}
 \newcommand{\subject}[1]{\renewcommand{\@subject}{#1}}
 
 % Declaration title text
-\newcommand{\@declarationtitle}{Declaration}
+\newcommand{\@declarationtitle}{Declaration of Authorship}
 
 % Acknowledgment title text
 \newcommand{\@acknowledgementstitle}{Acknowledgements}
 
 % Abstract title text
 \newcommand{\@abstracttitle}{Abstract}
+\newcommand{\@byname}{by}
 
 % Names for the nomenclature groups
 \newcommand{\@nomenclatureromans}{Roman Symbols}
@@ -1033,12 +1034,12 @@ wish to left align your text}
 \newenvironment{declaration}{
 \cleardoublepage
 \setsinglecolumn
-\chapter*{\centering \Large \@declarationtitle}
+\chapter*{ \LARGE \@declarationtitle}
 \thispagestyle{empty}
 }{
-\flushright
-\@author{}\\
-\@degreedate{}
+% \flushright
+% \@author{}\\
+% \@degreedate{}
 \vfill
 }
 
@@ -1051,7 +1052,7 @@ wish to left align your text}
 \newenvironment{acknowledgements}{
 \cleardoublepage
 \setsinglecolumn
-\chapter*{\centering \Large \@acknowledgementstitle}
+\chapter*{\centering \normalfont\LARGE \textit \@acknowledgementstitle}
 \thispagestyle{empty}
 }
 
@@ -1140,19 +1141,28 @@ wish to left align your text}
 
 
 \newenvironment{abstract} {
+\PHD@abstracttrue   % Temporarily enable
 \ifPHD@abstract
 % Separate abstract as per Student Registry guidelines
   \thispagestyle{empty}
   \setsinglecolumn
   \begin{center}
-    { \Large {\bfseries {\@title}} \par}
-    {{\large \vspace*{1em} \@author} \par}
+    {\normalsize \textcolor{mdtRed}{\MakeUppercase{\@university}}\par}
+    \bigskip
+    {\normalfont \huge \textit{\@abstracttitle} \par}
+    \bigskip
+    {\normalsize \@dept \par}
+    {\normalsize \@college \par}
+    \bigskip
+    {\normalsize {\bfseries {\@title}} \par}
+    \medskip
+    {{\normalsize \@byname{} \@author} \par}
   \end{center}
 \else
 % Normal abstract in the thesis
   \cleardoublepage
   \setsinglecolumn
-  \chapter*{\centering \Large \@abstracttitle}
+  \chapter*{\centering \LARGE \textit{\@abstracttitle}}
   \thispagestyle{empty}
 \fi
 }
@@ -1191,15 +1201,16 @@ wish to left align your text}
 \newsavebox{\PHD@Title}
 \begin{lrbox}{\PHD@Title}
   \begin{minipage}[c]{0.98\textwidth}
-    \rule{.9\linewidth}{.6pt} % Horizontal line
-    \centering \Huge \bfseries{\@title}
+    \centering 
+    \rule{.9\linewidth}{.6pt} \\
+    \vspace{1.0em}
+    \Huge \bfseries{\@title}
     \ifthenelse{\equal{\@subtitle}{}}{
       % subtitle is not defined
-    }{
-      \\
-      \centering \Large {\@subtitle}
-    } % subtitle is defined
-    \rule{.9\linewidth}{.6pt}  % Horizontal line
+    }{ \\ [0.5em]
+       \Large \@subtitle  % subtitle is defined
+    }  \\
+    \rule{.9\linewidth}{.6pt}
   \end{minipage}
 \end{lrbox}
 
@@ -1233,7 +1244,7 @@ wish to left align your text}
     \emph{Advisor:} \\
     {\@advisor}
     \end{flushright}
-  \end{minipage}\\[2cm]
+  \end{minipage}
 \end{lrbox}
 
 
