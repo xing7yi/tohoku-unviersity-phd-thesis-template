@@ -982,9 +982,9 @@ wish to left align your text}
 {\usebox{\PHD@Title}} % subtitle is defined
 
 % Author and Advisor
-\vspace*{3em}
+\vspace*{2.5em}
 {\usebox{\PHD@authorandadvisor}}
-\vspace*{3em}
+\vspace*{2.5em}
 
 % % Author
 % \vspace*{1em}
@@ -1212,13 +1212,13 @@ wish to left align your text}
   \begin{minipage}[c]{0.98\textwidth}
     \centering 
     \rule{.9\linewidth}{.6pt} \\
-    \vspace{1.0em}
+    \vspace{0.2em}
     \Huge \bfseries{\@title}
     \ifthenelse{\equal{\@subtitle}{}}{
       % subtitle is not defined
     }{ \\ [0.5em]
        \Large \@subtitle  % subtitle is defined
-    }  \\
+    }  \\ \vspace{0.2em}
     \rule{.9\linewidth}{.6pt}
   \end{minipage}
 \end{lrbox}
